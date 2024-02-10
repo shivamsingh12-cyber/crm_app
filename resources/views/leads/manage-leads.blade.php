@@ -100,7 +100,7 @@
                           </a>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="#">
+                          <a class="btn btn-primary btn-sm" href="{{url('/leads/view-lead/'.$single->id)}}">
                               <i class="fas fa-folder">
                               </i>
                               View

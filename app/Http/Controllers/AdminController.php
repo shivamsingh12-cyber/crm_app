@@ -120,4 +120,9 @@ class AdminController extends Controller
         $data['lead_details']=$lead;
         return view('leads.edit-lead')->with($data);
     }
+    public function view_lead($id)
+    {
+        $data['lead_detail']=leadModel::find($id);
+        return view('leads.view-lead')->with($data);
+    }
 }
