@@ -122,7 +122,21 @@ class AdminController extends Controller
     }
     public function view_lead($id)
     {
-        $data['lead_detail']=leadModel::find($id);
+        $lead=leadModel::find($id);
+        if ($lead=="") {
+            return redirect('/leads/manage-leads');
+        }
+        $data['lead_detail']=$lead;
         return view('leads.view-lead')->with($data);
+    }
+
+    public function convert_lead($id,Request $req)
+    {
+        $lead=leadModel::find($id);
+        if ($lead=="") {
+            return redirect('/leads/manage-leads');
+        }
+        $data['lead_detail']=$lead;
+        return view('leads.convert-lead')->with($data);
     }
 }

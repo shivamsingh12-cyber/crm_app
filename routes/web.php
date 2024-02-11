@@ -27,5 +27,6 @@ Route::group(['middleware'=>'auth'],function(){
         Route::any('/delete-lead/{id}', [AdminController::class,'delete_lead']);
         Route::any('/edit-lead/{id}', [AdminController::class,'edit_lead']);
         Route::any('/view-lead/{id}', [AdminController::class,'view_lead']);
+        Route::any('/convert-lead/{id}', [AdminController::class,'convert_lead']);
     });
 });
