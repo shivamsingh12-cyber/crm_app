@@ -168,7 +168,7 @@
 <!-- AdminLTE App -->
 <script src="{{url('')}}/../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{url('')}}/../../dist/js/demo.js"></script>
+{{-- <script src="{{url('')}}/../../dist/js/demo.js"></script> --}}
 @endpush
 
 
