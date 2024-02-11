@@ -39,31 +39,43 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Amount <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Amount" name="amount">
+                    @error('amount')
+                    <small class="text-danger">{{$message}}</small>
+                  @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Deal Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Deal Name" name="deal_name">
+                    @error('deal_name')
+                    <small class="text-danger">{{$message}}</small>
+                  @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Closing Date <span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Closing Date" name="closing_date">
+                    @error('closing_date')
+                    <small class="text-danger">{{$message}}</small>
+                  @enderror
                   </div>
                   @php
                   $lead_status=array('Qualification','Needs Analysis','Proposals/ Price Quote','Negotiation','Closed Won','Closed Lost');
                 @endphp
                 <div class="form-group">
-                  <label for="inputStatus">Stage</label>
+                  <label for="inputStatus">Stage<span class="text-danger">*</span></label>
                   <select id="inputStatus" class="form-control custom-select" name="lead_stage">
                     <option selected disabled>Select one</option>
                     @foreach($lead_status as $single)
                     <option value="{{ $single }}">{{ $single }}</option>
                     @endforeach
+                    @error('lead_stage')
+                    <small class="text-danger">{{$message}}</small>
+                  @enderror
                   </select>
+                
                 </div>
                 <!-- /.card-body -->
-
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success float-left">Convert</button>
+                  <button type="submit" class="btn btn-success float-left" name="submit" value="submit">Convert</button>
                <a href="{{url('/leads/manage-leads')}}" class="btn btn-primary float-right">Cancel</a>
                 </div>
               </form>

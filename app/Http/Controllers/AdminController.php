@@ -136,6 +136,14 @@ class AdminController extends Controller
         if ($lead=="") {
             return redirect('/leads/manage-leads');
         }
+        $submit=$req['submit'];
+        if ($submit=='submit') {
+            $req->validate([
+                'deal_name'=>'required',
+                'closing_date'=>'required',
+                'stage'=>'required'
+            ]);
+        }
         $data['lead_detail']=$lead;
         return view('leads.convert-lead')->with($data);
     }
