@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\leadModel;
+use App\Models\accountModel;
+use App\Models\dealModel;
+use App\Models\contactModel;
 
 class AdminController extends Controller
 {
@@ -141,8 +144,37 @@ class AdminController extends Controller
             $req->validate([
                 'deal_name'=>'required',
                 'closing_date'=>'required',
-                'stage'=>'required'
+                'lead_stage'=>'required'
             ]);
+            // create account
+            $account = new accountModel;
+            $account->account_name = $lead->company;
+            $account->phone = $lead->phone;
+            $account->save();
+
+            $account_id = $account->id;
+
+            //create contact
+            $contact = new contactModel;
+            $contact->contact_name = $lead->first_name.' '.$lead->last_name;
+            $contact->account_id = $account_id;
+            $contact->email = $lead->email;
+            $contact->phone = $lead->phone;
+            $contact->save();
+
+            $contact_id= $contact->id;
+
+            //create deal
+            $deal= new dealModel;
+            $deal->amount=$req['amount'];
+            $deal->deal_name=$req['deal_name'];
+            $deal->closing_date=$req['closing_date'];
+            $deal->deal_stage=$req['lead_stage'];
+            $deal->account_id=$account_id;
+            $deal->contact_id=$contact_id;
+            $deal->save();  
+
+            return redirect('/deals/manage-deals');   
         }
         $data['lead_detail']=$lead;
         return view('leads.convert-lead')->with($data);

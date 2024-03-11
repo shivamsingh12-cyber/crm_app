@@ -38,7 +38,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Amount <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Amount" name="amount">
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Amount" name="amount">
                     @error('amount')
                     <small class="text-danger">{{$message}}</small>
                   @enderror
