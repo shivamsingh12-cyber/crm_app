@@ -29,4 +29,14 @@ Route::group(['middleware'=>'auth'],function(){
         Route::any('/view-lead/{id}', [AdminController::class,'view_lead']);
         Route::any('/convert-lead/{id}', [AdminController::class,'convert_lead']);
     });
+
+    Route::group(["prefix"=>'accounts'],function(){
+        Route::any('/add-leads', [AdminController::class,'add_lead']);
+    });
+    Route::group(["prefix"=>'deals'],function(){
+        Route::any('/add-leads', [AdminController::class,'add_lead']);
+    });
+    Route::group(["prefix"=>'contacts'],function(){
+        Route::any('/add-leads', [AdminController::class,'add_lead']);
+    });
 });
