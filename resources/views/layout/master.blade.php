@@ -292,7 +292,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('/leads/manage-leads')}}" class="nav-link">
+                <a href="{{url('/contacts/manage-contacts')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Contacts</p>
                 </a>
@@ -316,7 +316,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('/leads/manage-leads')}}" class="nav-link">
+                <a href="{{url('/deals/manage-deals')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Deal</p>
                 </a>

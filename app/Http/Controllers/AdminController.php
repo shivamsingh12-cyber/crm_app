@@ -179,4 +179,20 @@ class AdminController extends Controller
         $data['lead_detail']=$lead;
         return view('leads.convert-lead')->with($data);
     }
+
+    public function manage_accounts()
+    {
+        $data["accounts"]= accountModel::all();
+                return view("accounts/manage_accounts")->with($data);
+    }
+    public function manage_contacts()
+    {
+        $data["contacts"]= contactModel::all();
+                return view("contacts/manage_contacts")->with($data);
+    }
+    public function manage_deals()
+    {
+        $data["deals"]= dealModel::all();
+                return view("deals/manage_deals")->with($data);
+    }
 }

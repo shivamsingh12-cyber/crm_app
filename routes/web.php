@@ -31,12 +31,12 @@ Route::group(['middleware'=>'auth'],function(){
     });
 
     Route::group(["prefix"=>'accounts'],function(){
-        Route::any('/add-leads', [AdminController::class,'add_lead']);
+        Route::any('/manage-accounts', [AdminController::class,'manage_accounts']);
     });
     Route::group(["prefix"=>'deals'],function(){
-        Route::any('/add-leads', [AdminController::class,'add_lead']);
+        Route::any('/manage-deals', [AdminController::class,'manage_deals']);
     });
     Route::group(["prefix"=>'contacts'],function(){
-        Route::any('/add-leads', [AdminController::class,'add_lead']);
+        Route::any('/manage-contacts', [AdminController::class,'manage_contacts']);
     });
 });
