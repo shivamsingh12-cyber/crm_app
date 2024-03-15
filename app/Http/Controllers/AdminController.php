@@ -187,7 +187,7 @@ class AdminController extends Controller
     }
     public function manage_contacts()
     {
-        $data["contacts"]= contactModel::all();
+        $data["contacts"]= contactModel::with('getAccountDetail')->get();
                 return view("contacts/manage_contacts")->with($data);
     }
     public function manage_deals()
