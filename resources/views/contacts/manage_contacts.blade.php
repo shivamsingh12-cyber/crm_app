@@ -77,7 +77,7 @@
                       </td>
                       <td>
                       <a>
-                      {{$single->account_id}}
+                      {{$single->getAccountDetail->account_name}}
                           </a>
                       </td>
                       <td>
