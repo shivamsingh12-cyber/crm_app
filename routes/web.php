@@ -32,6 +32,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::group(["prefix"=>'accounts'],function(){
         Route::any('/manage-accounts', [AdminController::class,'manage_accounts']);
+        Route::any('/add-account', [AdminController::class,'add_account']);
     });
     Route::group(["prefix"=>'deals'],function(){
         Route::any('/manage-deals', [AdminController::class,'manage_deals']);

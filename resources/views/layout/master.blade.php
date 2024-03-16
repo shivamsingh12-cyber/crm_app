@@ -262,7 +262,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/leads/add-leads')}}" class="nav-link">
+                <a href="{{url('/accounts/add-account')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Account</p>
                 </a>
@@ -286,7 +286,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/leads/add-leads')}}" class="nav-link">
+                <a href="{{url('/contacts/add-contacts')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Contact</p>
                 </a>
@@ -310,7 +310,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/leads/add-leads')}}" class="nav-link">
+                <a href="{{url('/deals/add-deals')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Deal</p>
                 </a>

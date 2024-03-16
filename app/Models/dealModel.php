@@ -17,4 +17,8 @@ class dealModel extends Model
     {
         return $this->hasOne(accountModel::class,'id','contact_id');
     }
+    public function get_contactdetail()
+    {
+        return $this->hasOne(contactModel::class,'id','contact_id');
+    }
 }

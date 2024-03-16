@@ -98,12 +98,12 @@
                       </td>
                       <td>
                       <a>
-                      {{$single->account_id}}
+                      {{$single->get_accountdetail->account_name}}
                           </a>
                       </td>
                       <td>
                       <a>
-                      {{$single->contact_id}}
+                      {{$single->get_contactdetail->contact_name}}
                           </a>
                       </td>
                       <td class="project-actions text-right">

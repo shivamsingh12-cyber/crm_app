@@ -192,7 +192,26 @@ class AdminController extends Controller
     }
     public function manage_deals()
     {
-        $data["deals"]= dealModel::all();
+        $data["deals"]= dealModel::with('get_accountdetail')->with('get_contactdetail')->get();
                 return view("deals/manage_deals")->with($data);
+    }
+
+    public function add_account(Request $req){
+        $submit=$req['submit'];
+        if($submit=="submit"){
+            $req->validate([
+                        'account_name'=>'required',
+                        'phone'=>'required'
+            ]);
+
+              // create account
+              $account = new accountModel;
+              $account->account_name = $req['account_name'];
+              $account->phone = $req['phone'];
+              $account->website = $req['web'];
+              $account->save();
+              return redirect('accounts/manage-accounts');
+        }
+        return view('accounts/add_account');
     }
 }
