@@ -88,7 +88,7 @@
                               </i>
                               View
                           </a>
-                          <a class="btn btn-info btn-sm" href="{{url('/leads/edit-lead/'.$single->id)}}">
+                          <a class="btn btn-info btn-sm" href="{{url('/accounts/edit-account/'.$single->id)}}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
