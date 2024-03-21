@@ -239,4 +239,10 @@ class AdminController extends Controller
         }
                 return view('accounts/edit_account')->with($data);
     }
+
+    public function delete_account($id)
+    {
+        accountModel::find($id)->delete();
+        return redirect('/accounts/manage-accounts');
+    }
 }

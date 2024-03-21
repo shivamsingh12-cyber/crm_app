@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('contact_name',100);
             $table->unsignedBigInteger('account_id');
-            $table->foreign('account_id')->references('id')->on('accounts');
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->string('email',100)->nullable();
             $table->string('phone',15);
             $table->timestamps();

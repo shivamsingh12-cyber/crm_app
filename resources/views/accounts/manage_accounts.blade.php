@@ -93,7 +93,7 @@
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="{{url('/leads/delete-lead/'.$single->id)}}" onclick="confirm('Are you sure you want to delete')">
+                          <a class="btn btn-danger btn-sm" href="{{url('/accounts/delete-account/'.$single->id)}}" onclick="confirm('Are you sure you want to delete')">
                               <i class="fas fa-trash">
                               </i>
                               Delete
