@@ -245,4 +245,26 @@ class AdminController extends Controller
         accountModel::find($id)->delete();
         return redirect('/accounts/manage-accounts');
     }
+
+    public function add_contact(Request $req){
+        $submit=$req['submit'];
+        if($submit=="submit"){
+            $req->validate([
+                        'contact_name'=>'required',
+                        'account_id'=>'required',
+                        'phone'=>'required'
+            ]);
+
+              // create account
+              $contact = new contactModel;
+              $contact->contact_name = $req['contact_name'];
+              $contact->account_id = $req['account_id'];
+              $contact->phone = $req['phone'];
+              $contact->email = $req['email'];
+              $contact->save();
+              return redirect('contacts/manage-contacts');
+        }
+        $data['account_list']= accountModel::all();
+        return view('contacts.add_contact')->with($data);
+    }
 }

@@ -286,7 +286,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/contacts/add-contacts')}}" class="nav-link">
+                <a href="{{url('/contacts/add-contact')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Contact</p>
                 </a>
