@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+Route::any('/', [AdminController::class,'starter']);
 Route::any('/login', [AdminController::class,'login'])->name('login');
 
 Route::group(['middleware'=>'auth'],function(){
@@ -38,6 +39,7 @@ Route::group(['middleware'=>'auth'],function(){
     });
     Route::group(["prefix"=>'deals'],function(){
         Route::any('/manage-deals', [AdminController::class,'manage_deals']);
+        Route::any('/add-deal', [AdminController::class,'add_deal']);
     });
     Route::group(["prefix"=>'contacts'],function(){
         Route::any('/manage-contacts', [AdminController::class,'manage_contacts']);

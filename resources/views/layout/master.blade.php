@@ -310,7 +310,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/deals/add-deals')}}" class="nav-link">
+                <a href="{{url('/deals/add-deal')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Deal</p>
                 </a>

@@ -11,6 +11,11 @@ use App\Models\contactModel;
 
 class AdminController extends Controller
 {
+    public function starter()
+    {
+        return view('/login');
+    }
+    
     public function login(Request $req)
     {
         $submit=$req['submit'];
@@ -192,8 +197,8 @@ class AdminController extends Controller
     }
     public function manage_deals()
     {
-        $data["deals"]= dealModel::with('get_accountdetail')->with('get_contactdetail')->get();
-                return view("deals/manage_deals")->with($data);
+        $data["deals"]= dealModel::with('get_account_detail')->with('get_contact_detail')->get();
+                return view("deals.manage_deals")->with($data);
     }
 
     public function add_account(Request $req){
@@ -303,6 +308,33 @@ class AdminController extends Controller
       $contact->delete();
       return redirect("contacts/manage-contacts");
     
+    }
+    public function add_deal(Request $req)
+    {
+        $data['accounts'] = accountModel::all();
+        $data['contacts'] = contactModel::all();
+         $submit=$req['submit'];
+         if($submit=="submit"){
+             $req->validate([
+                         'deal_name'=>'required',
+                         'closing_date'=>'required',
+                         'deal_stage'=>'required',
+                         'account_id'=>'required',
+                         'contact_id'=>'required'
+             ]);
+             $deals =new dealModel;
+             $deals->account_id=$req['account_id'];
+             $deals->contact_id=$req['contact_id'];
+             $deals->amount=$req['amount'];
+             $deals->deal_name=$req['deal_name'];
+             $deals->closing_date=$req['closing_date'];
+             $deals->deal_stage=$req['deal_stage'];
+             $deals->save();
+
+             return redirect('deals/manage-deals');
+            }   
+        return view('deals.add_deal')->with($data);
+        
     }
 
     
