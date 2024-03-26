@@ -91,17 +91,17 @@
                           </a>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="{{url('/leads/view-lead/'.$single->id)}}">
+                          {{-- <a class="btn btn-primary btn-sm" href="{{url('/leads/view-lead/'.$single->id)}}">
                               <i class="fas fa-folder">
                               </i>
                               View
-                          </a>
-                          <a class="btn btn-info btn-sm" href="{{url('/leads/edit-lead/'.$single->id)}}">
+                          </a> --}}
+                          <a class="btn btn-info btn-sm" href="{{url('/contacts/edit-contact/'.$single->id)}}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="{{url('/leads/delete-lead/'.$single->id)}}" onclick="confirm('Are you sure you want to delete')">
+                          <a class="btn btn-danger btn-sm" href="{{url('/contacts/delete-contact/'.$single->id)}}" onclick="confirm('Are you sure you want to delete')">
                               <i class="fas fa-trash">
                               </i>
                               Delete

@@ -42,5 +42,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::group(["prefix"=>'contacts'],function(){
         Route::any('/manage-contacts', [AdminController::class,'manage_contacts']);
          Route::any('/add-contact', [AdminController::class,'add_contact']);
+         Route::any('/edit-contact/{id}', [AdminController::class,'edit_contact']);
+         Route::any('/delete-contact/{id}', [AdminController::class,'delete_contact']);
     });
 });

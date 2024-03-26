@@ -237,7 +237,7 @@ class AdminController extends Controller
               $data['account_detail']->save();
               return redirect('accounts/manage-accounts');
         }
-                return view('accounts/edit_account')->with($data);
+                return view('accounts.edit_account')->with($data);
     }
 
     public function delete_account($id)
@@ -267,4 +267,43 @@ class AdminController extends Controller
         $data['account_list']= accountModel::all();
         return view('contacts.add_contact')->with($data);
     }
+
+    public function edit_contact(Request $req, $id){
+        $data['contact_detail']=contactModel::find($id);
+        if($data['contact_detail'] ==""){
+            return redirect("contacts/managed_contacts");
+        }
+        $submit=$req['Update'];
+        if($submit=="Update"){
+            $req->validate([
+                        'contact_name'=>'required',
+                        'account_id'=>'required',
+                        'phone'=>'required'
+            ]);
+
+              // create account
+              $data['contact_detail']->contact_name = $req['contact_name'];
+              $data['contact_detail']->account_id = $req['account_id'];
+              $data['contact_detail']->phone = $req['phone'];
+              $data['contact_detail']->email = $req['email'];
+              $data['contact_detail']->save();
+              return redirect('contacts/manage-contacts');
+        }
+   
+        $data['account_list']= accountModel::all();
+        return view('contacts.edit_contact')->with($data);
+    }
+
+    public function delete_contact(Request $req, $id){
+      $contact = contactModel::find($id);
+      if($contact == "")
+      {
+        return redirect("contacts/manage-contacts");
+      }
+      $contact->delete();
+      return redirect("contacts/manage-contacts");
+    
+    }
+
+    
 }
