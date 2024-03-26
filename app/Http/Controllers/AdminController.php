@@ -197,7 +197,7 @@ class AdminController extends Controller
     }
     public function manage_deals()
     {
-        $data["deals"]= dealModel::with('get_account_detail')->with('get_contact_detail')->get();
+        $data["deals"]= dealModel::with('get_accountdetail')->with('get_contactdetail')->get();
                 return view("deals.manage_deals")->with($data);
     }
 
@@ -322,6 +322,7 @@ class AdminController extends Controller
                          'account_id'=>'required',
                          'contact_id'=>'required'
              ]);
+
              $deals =new dealModel;
              $deals->account_id=$req['account_id'];
              $deals->contact_id=$req['contact_id'];
@@ -331,10 +332,53 @@ class AdminController extends Controller
              $deals->deal_stage=$req['deal_stage'];
              $deals->save();
 
-             return redirect('deals/manage-deals');
+             return redirect('/deals/manage-deals');
             }   
         return view('deals.add_deal')->with($data);
         
+    }
+
+    public function delete_deal($id)
+    {
+        $deal=dealModel::find($id);
+        if($deal=="")
+        {
+            return redirect('/deals/manage-deals');
+        }
+        $deal->delete();
+        return redirect('/deals/manage-deals');
+    }
+
+    public function edit_deal($id,Request $req)
+    {
+        $data['accounts'] = accountModel::all();
+        $data['contacts'] = contactModel::all();
+        $deal=dealModel::find($id);
+        if($deal == "")
+        {
+            return redirect('/deals/manage-deals');
+        }
+        $submit=$req['submit'];
+        if($submit=="submit"){
+            $req->validate([
+                        'deal_name'=>'required',
+                        'closing_date'=>'required',
+                        'deal_stage'=>'required',
+                        'account_id'=>'required',
+                        'contact_id'=>'required'
+            ]);
+
+            $deal->account_id=$req['account_id'];
+            $deal->contact_id=$req['contact_id'];
+            $deal->amount=$req['amount'];
+            $deal->deal_name=$req['deal_name'];
+            $deal->closing_date=$req['closing_date'];
+            $deal->deal_stage=$req['deal_stage'];
+            $deal->save();
+            return redirect('/deals/manage-deals');
+        }  
+        $data['deal_detail']=$deal;
+        return view('deals.edit_deal')->with($data);
     }
 
     
